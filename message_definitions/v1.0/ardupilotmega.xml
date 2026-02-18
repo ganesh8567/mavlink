@@ -2066,5 +2066,27 @@
       <field type="char[10]" name="name" instance="true">Name of the debug variable</field>
       <field type="char[64]" name="value">Value of the debug variable</field>
     </message>
+  <!--  Dronobot Addition  -->
+    <message id="13000" name="DBGCS_COMM_Control">
+     <description>This packet will control the pump accessories in the SBC</description>
+     <field type="uint8_t" name="pump_OnOFF"> 1 indicates to power on the pump | 0 to power off the pump</field>
+     <field type="uint8_t" name="resumemission_OnOFF"> 1 indicates to resume mission enable | 0 to resume mission disable</field>
+   </message>
+   <message id="13001" name="DBGCS_COMM">
+     <description>This packet will be used for the communication between FCS and GCS</description>
+     <field type="uint8_t" name="pu_feeback_val"> 1 indicates pump is on and spraying | 0 indicate the pump is off or faulty.</field>
+     <field type="uint32_t" name="flight_time" units="s"> Flight time, gets its value from autopilot</field>
+     <field type="float" name="flowmeter_val"> indicates value of the flowmeter</field>
+    <field type="float" name="remaining_payload"> indicates value of the fuel remaining</field>
+   </message>
+   <message id="13002" name="DBGCS_MOTORCAN">
+     <description>This packet will be used for the communication between FCS and GCS for ESC CAN</description>
+     <field type="uint8_t" name="error_flags"> States err if any in Motor</field>
+     <field type="uint8_t" name="temperature" units="deg"> Temperature of motors</field>
+     <field type="float" name="current"> indicates value of the current</field>
+    <field type="float" name="voltage"> indicates value of the voltage</field>
+    <field type="float" name="rpm"> motor speed </field>
+  </message>
+    <!--  Dronobot Addition  -->
   </messages>
 </mavlink>
